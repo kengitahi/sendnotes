@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="mx-auto space-y-4 max-w-7xl sm:px-4 lg:px-6">
-            <x-button class="mb-8" href="{{ route('notes.index') }}" icon="arrow-left" secondary>Back To All
+            <x-button class="mb-8" href="{{ route('notes.index') }}" icon="arrow-left" secondary wire:navigate>Back To All
                 Notes</x-button>
             <livewire:notes.create-note />
         </div>

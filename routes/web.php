@@ -32,13 +32,13 @@ Route::view('notes/create', 'notes.create')
     ->middleware(['auth'])
     ->name('notes.create');
 
-Route::view('notes/view/{id}', 'notes.view')
-    ->middleware(['auth'])
-    ->name('notes.view');
-
 Volt::route('notes/{note}/edit', 'notes.edit-note')
     ->middleware(['auth'])
     ->name('notes.edit');
+
+Volt::route('notes/view/{note}', 'notes.view-note')
+    ->middleware(['auth'])
+    ->name('notes.view');
 
 
 require __DIR__ . '/auth.php';

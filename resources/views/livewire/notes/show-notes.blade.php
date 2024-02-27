@@ -42,7 +42,7 @@ new class extends Component
         <x-card wire:key='{{ $note->id }}'>
             <div class="grid grid-cols-2 gap-4 p-4">
                 <div class="flex flex-col justify-between gap-4">
-                    <a class="text-xl font-bold hover:text-blue-500 hover:underline" href="{{route('notes.edit', $note)}}">{{ $note->title }}</a>
+                    <a class="text-xl font-bold hover:text-blue-500 hover:underline" href="{{route('notes.view', $note)}}" wire:navigate>{{ $note->title }}</a>
                     <p>{{ $note->body }}</p>
                     <p class="text-xs">Recipient: <span class="font-bold">{{ $note->recipient }}</span></p>
 
@@ -52,8 +52,8 @@ new class extends Component
                         Send date: {{ \Carbon\Carbon::parse($note->send_date)->format('d M Y') }}
                     </p>
                     <div class="flex gap-2">
-                        <x-button.circle href="{{ route('notes.view', ['id' => $note->id]) }}"></x-button.circle>
-                        <x-button.circle icon='trash' wire:click="delete('{{ $note->id }}')" wire:confirm="Are you sure you want to delete this note?">
+                        <x-button.circle href="{{route('notes.edit', $note)}}" icon="pencil" green wire:navigate></x-button.circle>
+                        <x-button.circle icon='trash' wire:click="delete('{{ $note->id }}')" wire:confirm='Are you sure you want to delete the note &quot;{{ $note->title}}?' negative>
                         </x-button.circle>
                     </div>
                 </div>
